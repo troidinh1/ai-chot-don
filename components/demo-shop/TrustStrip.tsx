@@ -1,23 +1,41 @@
 const items = [
-  "Cam kết hàng chính hãng",
-  "Gọi xác nhận trước khi giao",
-  "Đổi trả nếu có lỗi",
-  "Tư vấn nhanh qua Zalo",
+  {
+    title: "Hàng chính hãng",
+    desc: "Thông tin sản phẩm rõ ràng",
+  },
+  {
+    title: "Giá niêm yết",
+    desc: "Có giá sale và giá gốc",
+  },
+  {
+    title: "Đặt hàng nhanh",
+    desc: "Thêm giỏ trong vài chạm",
+  },
+  {
+    title: "Shop xử lý đơn",
+    desc: "Gọi/Zalo khi cần xác nhận",
+  },
 ];
 
 export default function TrustStrip() {
   return (
-    <section className="px-4 py-4 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-3 rounded-[2rem] border border-emerald-100 bg-gradient-to-r from-white via-[#fbfdfb] to-[#f7fff9] p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
+    <section className="bg-[#f6f2ec] px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item) => (
           <div
-            key={item}
-            className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+            key={item.title}
+            className="group flex items-center gap-4 rounded-2xl border border-[#eadfce] bg-[#fffdf8] p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-sm font-black text-white">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-sm font-black text-white shadow-lg shadow-emerald-600/15">
               ✓
-            </span>
-            <p className="text-sm font-black text-slate-800">{item}</p>
+            </div>
+
+            <div>
+              <p className="font-black text-slate-950">{item.title}</p>
+              <p className="mt-1 text-xs font-bold text-slate-500">
+                {item.desc}
+              </p>
+            </div>
           </div>
         ))}
       </div>

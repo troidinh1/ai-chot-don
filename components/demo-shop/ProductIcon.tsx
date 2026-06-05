@@ -1,18 +1,31 @@
-export default function ProductIcon() {
+type ProductIconProps = {
+  imageUrl: string | null;
+  name: string;
+  size?: "sm" | "md";
+};
+
+export default function ProductIcon({
+  imageUrl,
+  name,
+  size = "md",
+}: ProductIconProps) {
+  const boxSize = size === "sm" ? "h-12 w-12 text-2xl" : "h-16 w-16 text-3xl";
+
+  if (imageUrl) {
+    return (
+      <img
+        src={imageUrl}
+        alt={name}
+        className={`${boxSize} rounded-2xl object-cover transition group-hover:scale-110`}
+      />
+    );
+  }
+
   return (
-    <svg
-      className="h-12 w-12 opacity-70"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+    <div
+      className={`${boxSize} flex items-center justify-center rounded-2xl bg-emerald-100 shadow-inner transition group-hover:scale-110`}
     >
-      <path d="M9 3h6v4H9z" />
-      <path d="M8 7h8v14H8z" />
-      <path d="M10 12h4" />
-      <path d="M10 16h4" />
-    </svg>
+      🧴
+    </div>
   );
 }

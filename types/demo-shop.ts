@@ -1,33 +1,37 @@
-export type DemoProduct = {
-  id: number;
+export type DemoShop = {
+  id: string;
   name: string;
-  category: string;
+  slug: string;
+  description: string | null;
+  phone: string | null;
+  zalo_url: string | null;
+  facebook_url: string | null;
+  theme_color: string;
+};
+
+export type DemoCategory = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  sort_order: number;
+};
+
+export type DemoProduct = {
+  id: string;
+  name: string;
+  slug: string;
+  shortDescription: string | null;
+  description: string | null;
   price: number;
-  oldPrice: number;
-  badge: string;
+  oldPrice: number | null;
+  imageUrl: string | null;
   stock: number;
   sold: number;
-  rating: number;
+  badge: string | null;
   isFlashSale: boolean;
-  description: string;
-};
-
-export type DemoShop = {
-  name: string;
-  slogan: string;
-  description: string;
-  phone: string;
-  zalo: string;
-  facebook: string;
-  address: string;
-};
-
-export type DemoTestimonial = {
-  name: string;
-  content: string;
-};
-
-export type DemoFaq = {
-  question: string;
-  answer: string;
+  isFeatured: boolean;
+  categoryId: string | null;
+  categoryName: string | null;
+  categorySlug: string | null;
 };

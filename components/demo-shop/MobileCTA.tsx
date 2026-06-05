@@ -1,42 +1,32 @@
-import type { DemoShop } from "@/types/demo-shop";
+"use client";
+
+import { formatCurrency } from "@/lib/format";
 
 type MobileCTAProps = {
-  shop: DemoShop;
   cartCount: number;
+  subtotal: number;
   onOpenCart: () => void;
 };
 
 export default function MobileCTA({
-  shop,
   cartCount,
+  subtotal,
   onOpenCart,
 }: MobileCTAProps) {
+  if (cartCount === 0) return null;
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/95 p-3 backdrop-blur-2xl md:hidden">
-      <div className="grid grid-cols-3 gap-2">
-        <a
-          href={`tel:${shop.phone}`}
-          className="rounded-2xl bg-slate-950 px-3 py-3 text-center text-xs font-black text-white"
-          style={{ color: "#ffffff" }}
-        >
-          Gọi shop
-        </a>
-        <a
-          href={shop.zalo}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-2xl bg-emerald-600 px-3 py-3 text-center text-xs font-black text-white"
-          style={{ color: "#ffffff" }}
-        >
-          Zalo
-        </a>
-        <button
-          onClick={onOpenCart}
-          className="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-center text-xs font-black text-slate-950"
-        >
-          Giỏ {cartCount}
-        </button>
-      </div>
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#eadfce] bg-white p-3 shadow-[0_-10px_30px_rgba(15,23,42,0.12)] lg:hidden">
+      <button
+        type="button"
+        onClick={onOpenCart}
+        className="flex w-full items-center justify-between rounded-2xl bg-[#07111f] px-5 py-4 text-white"
+      >
+        <span className="text-sm font-black">
+          {cartCount} sản phẩm trong giỏ
+        </span>
+        <span className="text-sm font-black">{formatCurrency(subtotal)}</span>
+      </button>
     </div>
   );
 }

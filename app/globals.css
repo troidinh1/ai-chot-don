@@ -251,3 +251,15 @@ select:-webkit-autofill {
     transform: scale(1.06);
   }
 }
+
+.solid-dark-text {
+  color: #081120 !important;
+  -webkit-text-fill-color: #081120 !important;
+  opacity: 1 !important;
+}
+
+.solid-white-text {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
