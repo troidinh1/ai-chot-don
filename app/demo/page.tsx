@@ -145,6 +145,8 @@ export default function DemoShopPage() {
         onAddToCart={() => setCartCount((prev) => prev + 1)}
       />
 
+      <TrustStrip />
+
       <DemoProductGrid
         products={filteredProducts}
         categories={demoCategories}
@@ -241,7 +243,7 @@ function FlashSaleSection({
             </h2>
           </div>
 
-          <div className="flex items-center gap-3 rounded-2xl bg-slate-950 px-4 py-3 text-white">
+          <div className="flex w-fit items-center gap-3 rounded-2xl bg-slate-950 px-4 py-3 text-white">
             <span className="text-sm font-bold text-slate-300">Kết thúc sau</span>
             <TimeBox value="01" />
             <span className="font-black">:</span>
@@ -272,12 +274,20 @@ function FlashSaleCard({
   product: (typeof demoProducts)[number];
   onAddToCart: () => void;
 }) {
+  const soldPercent = Math.max(
+    18,
+    Math.min(100, Math.round((product.sold / (product.sold + product.stock)) * 100))
+  );
+
   return (
     <article className="overflow-hidden rounded-[1.6rem] bg-white p-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
       <div className="relative flex h-40 items-center justify-center rounded-[1.2rem] bg-gradient-to-br from-orange-100 to-emerald-100 text-orange-600">
         <ProductIcon />
         <span className="absolute left-3 top-3 rounded-full bg-red-600 px-3 py-1 text-xs font-black text-white">
           SALE
+        </span>
+        <span className="absolute right-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-black text-orange-600">
+          Hot
         </span>
       </div>
 
@@ -295,21 +305,53 @@ function FlashSaleCard({
           </p>
         </div>
 
-        <div className="mt-3 rounded-full bg-orange-100 p-1">
-          <div className="rounded-full bg-gradient-to-r from-orange-400 to-red-500 px-3 py-1 text-center text-xs font-black text-white">
-            🔥 Còn {product.stock}/{product.stock + product.sold} suất
+        <div className="mt-3 rounded-2xl bg-orange-50 p-3">
+          <div className="flex items-center justify-between text-xs font-black">
+            <span className="text-orange-600">Đã bán {product.sold}</span>
+            <span className="text-slate-500">Còn {product.stock}</span>
+          </div>
+
+          <div className="mt-2 h-2 overflow-hidden rounded-full bg-orange-100">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-orange-400 to-red-500"
+              style={{ width: `${soldPercent}%` }}
+            />
           </div>
         </div>
 
         <button
           onClick={onAddToCart}
-          className="mt-3 w-full rounded-2xl bg-slate-950 px-4 py-3 text-sm font-black text-white transition hover:bg-emerald-700"
+          className="mt-3 w-full rounded-2xl bg-gradient-to-r from-orange-500 to-red-500 px-4 py-3 text-sm font-black text-white shadow-lg shadow-orange-200 transition hover:scale-[1.01]"
           style={{ color: "#ffffff" }}
         >
           Mua ngay
         </button>
       </div>
     </article>
+  );
+}
+
+function TrustStrip() {
+  const items = [
+    "Cam kết hàng chính hãng",
+    "Gọi xác nhận trước khi giao",
+    "Đổi trả nếu có lỗi",
+    "Tư vấn nhanh qua Zalo",
+  ];
+
+  return (
+    <section className="px-4 py-4 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-3 rounded-[2rem] border border-emerald-100 bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
+        {items.map((item) => (
+          <div key={item} className="flex items-center gap-3 rounded-2xl bg-emerald-50 p-4">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-sm font-black text-white">
+              ✓
+            </span>
+            <p className="text-sm font-black text-slate-800">{item}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

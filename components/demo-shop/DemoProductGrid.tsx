@@ -46,6 +46,10 @@ export default function DemoProductGrid({
               {products.length} sản phẩm phù hợp với tìm kiếm của bạn.
             </p>
           </div>
+
+          <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm font-black text-emerald-800">
+            Freeship cho đơn từ 299K
+          </div>
         </div>
 
         <div className="mb-8 overflow-x-auto pb-2">
@@ -103,20 +107,30 @@ function ProductCard({
     ((product.oldPrice - product.price) / product.oldPrice) * 100
   );
 
-  const stockPercent = Math.max(12, Math.min(100, product.stock * 5));
+  const soldPercent = Math.max(
+    18,
+    Math.min(100, Math.round((product.sold / (product.sold + product.stock)) * 100))
+  );
 
   return (
     <article className="group overflow-hidden rounded-[1.7rem] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-200">
       <div className="relative flex h-48 items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-100 via-teal-50 to-orange-50 text-emerald-700">
+        <div className="absolute inset-4 rounded-[1.3rem] border border-white/70 bg-white/30" />
         <ProductIcon />
 
-        <div className="absolute left-3 top-3 rounded-full bg-orange-500 px-3 py-1 text-xs font-black text-white shadow-sm">
+        <div className="absolute left-3 top-3 rounded-full bg-red-600 px-3 py-1 text-xs font-black text-white shadow-sm">
           -{discountPercent}%
         </div>
 
         <div className="absolute right-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-black text-emerald-700 shadow-sm">
           {product.badge}
         </div>
+
+        {product.isFlashSale && (
+          <div className="absolute bottom-3 left-3 rounded-full bg-orange-500 px-3 py-1 text-xs font-black text-white shadow-sm">
+            Flash sale
+          </div>
+        )}
       </div>
 
       <div className="p-4">
@@ -142,16 +156,16 @@ function ProductCard({
           <span>Đã bán {product.sold}</span>
         </div>
 
-        <div className="mt-3">
+        <div className="mt-3 rounded-2xl bg-slate-50 p-3">
           <div className="flex items-center justify-between text-xs font-black">
-            <span className="text-orange-600">🔥 Còn {product.stock} suất</span>
-            <span className="text-slate-400">Flash</span>
+            <span className="text-orange-600">Còn lại {product.stock}</span>
+            <span className="text-slate-400">Đã bán {product.sold}</span>
           </div>
 
-          <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-100">
+          <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-200">
             <div
               className="h-full rounded-full bg-gradient-to-r from-orange-400 to-red-500"
-              style={{ width: `${stockPercent}%` }}
+              style={{ width: `${soldPercent}%` }}
             />
           </div>
         </div>
@@ -171,7 +185,7 @@ function ProductCard({
 function ProductIcon() {
   return (
     <svg
-      className="h-14 w-14 opacity-70"
+      className="relative z-10 h-14 w-14 opacity-70"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
