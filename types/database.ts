@@ -157,3 +157,6 @@ export type CheckoutItem = {
 export type CheckoutSessionWithItems = CheckoutSession & {
   items: CheckoutItem[];
 };
+export type OrderWithItems = Order & {
+  items: OrderItem[];
+};

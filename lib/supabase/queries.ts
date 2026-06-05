@@ -157,3 +157,32 @@ export async function getCheckoutSession(
     items: items ?? [],
   } as CheckoutSessionWithItems;
 }
+
+import type { OrderWithItems } from "@/types/database";
+
+export async function getOrderById(orderId: string): Promise<OrderWithItems> {
+  const { data: order, error: orderError } = await supabaseAdmin
+    .from("orders")
+    .select("*")
+    .eq("id", orderId)
+    .single();
+
+  if (orderError || !order) {
+    throw new Error(orderError?.message ?? "Không tìm thấy đơn hàng.");
+  }
+
+  const { data: items, error: itemsError } = await supabaseAdmin
+    .from("order_items")
+    .select("*")
+    .eq("order_id", orderId)
+    .order("created_at", { ascending: true });
+
+  if (itemsError) {
+    throw new Error(itemsError.message);
+  }
+
+  return {
+    ...order,
+    items: items ?? [],
+  } as OrderWithItems;
+}
