@@ -2,6 +2,7 @@ type DemoShopHeaderProps = {
   shopName: string;
   zaloUrl: string;
   searchQuery: string;
+  cartCount: number;
   onSearchChange: (value: string) => void;
 };
 
@@ -9,6 +10,7 @@ export default function DemoShopHeader({
   shopName,
   zaloUrl,
   searchQuery,
+  cartCount,
   onSearchChange,
 }: DemoShopHeaderProps) {
   return (
@@ -41,6 +43,9 @@ export default function DemoShopHeader({
           <a href="#products" className="transition hover:text-emerald-700">
             Sản phẩm
           </a>
+          <a href="#flash-sale" className="transition hover:text-emerald-700">
+            Flash Sale
+          </a>
           <a href="#feedback" className="transition hover:text-emerald-700">
             Feedback
           </a>
@@ -48,6 +53,17 @@ export default function DemoShopHeader({
             FAQ
           </a>
         </nav>
+
+        <button
+          type="button"
+          className="relative hidden h-12 shrink-0 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-sm font-black text-slate-950 transition hover:border-emerald-300 hover:text-emerald-700 md:inline-flex"
+        >
+          <CartIcon />
+          <span>Giỏ hàng</span>
+          <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-orange-500 px-1.5 text-[11px] font-black text-white">
+            {cartCount}
+          </span>
+        </button>
 
         <a
           href={zaloUrl}
@@ -91,6 +107,25 @@ function SearchIcon() {
     >
       <circle cx="11" cy="11" r="7" />
       <path d="M20 20l-3.5-3.5" />
+    </svg>
+  );
+}
+
+function CartIcon() {
+  return (
+    <svg
+      className="h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 6h15l-2 9H8L6 6z" />
+      <path d="M6 6L5 3H2" />
+      <circle cx="9" cy="20" r="1.5" />
+      <circle cx="18" cy="20" r="1.5" />
     </svg>
   );
 }

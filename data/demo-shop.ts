@@ -11,6 +11,7 @@ export const demoShop = {
 
 export const demoCategories = [
   "Tất cả",
+  "Flash Sale",
   "Skincare",
   "Makeup",
   "Combo",
@@ -25,6 +26,10 @@ export const demoProducts = [
     price: 189000,
     oldPrice: 239000,
     badge: "Bán chạy",
+    stock: 9,
+    sold: 42,
+    rating: 4.9,
+    isFlashSale: true,
     description:
       "Serum dưỡng sáng da, hỗ trợ làm đều màu da, phù hợp dùng hằng ngày.",
   },
@@ -35,6 +40,10 @@ export const demoProducts = [
     price: 159000,
     oldPrice: 199000,
     badge: "Hot",
+    stock: 12,
+    sold: 58,
+    rating: 4.8,
+    isFlashSale: true,
     description:
       "Kem chống nắng mỏng nhẹ, nâng tone tự nhiên, phù hợp đi học, đi làm.",
   },
@@ -45,6 +54,10 @@ export const demoProducts = [
     price: 129000,
     oldPrice: 169000,
     badge: "Mới",
+    stock: 15,
+    sold: 31,
+    rating: 4.7,
+    isFlashSale: false,
     description:
       "Toner cấp ẩm nhẹ, giúp da mềm hơn trước các bước dưỡng tiếp theo.",
   },
@@ -55,6 +68,10 @@ export const demoProducts = [
     price: 99000,
     oldPrice: 139000,
     badge: "Tiết kiệm",
+    stock: 20,
+    sold: 77,
+    rating: 4.9,
+    isFlashSale: false,
     description:
       "Làm sạch nhẹ nhàng, không gây khô căng, phù hợp nhiều loại da.",
   },
@@ -65,6 +82,10 @@ export const demoProducts = [
     price: 89000,
     oldPrice: 119000,
     badge: "Yêu thích",
+    stock: 11,
+    sold: 66,
+    rating: 4.8,
+    isFlashSale: true,
     description:
       "Chất son nhẹ môi, màu tự nhiên, phù hợp makeup hằng ngày.",
   },
@@ -75,8 +96,40 @@ export const demoProducts = [
     price: 299000,
     oldPrice: 399000,
     badge: "Combo lời",
+    stock: 5,
+    sold: 93,
+    rating: 5,
+    isFlashSale: true,
     description:
       "Combo gồm serum, toner và sữa rửa mặt cho routine chăm sóc da cơ bản.",
+  },
+  {
+    id: 7,
+    name: "Set makeup đi học nhẹ nhàng",
+    category: "Makeup",
+    price: 219000,
+    oldPrice: 289000,
+    badge: "Bán chạy",
+    stock: 8,
+    sold: 39,
+    rating: 4.8,
+    isFlashSale: false,
+    description:
+      "Set trang điểm nhẹ gồm son tint, cushion mini và má hồng tự nhiên.",
+  },
+  {
+    id: 8,
+    name: "Combo cấp ẩm phục hồi",
+    category: "Combo",
+    price: 349000,
+    oldPrice: 459000,
+    badge: "Hot deal",
+    stock: 6,
+    sold: 51,
+    rating: 4.9,
+    isFlashSale: true,
+    description:
+      "Combo phù hợp cho da khô, thiếu ẩm, cần routine phục hồi đơn giản.",
   },
 ];
 
