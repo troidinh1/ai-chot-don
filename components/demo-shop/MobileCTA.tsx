@@ -3,9 +3,14 @@ import type { DemoShop } from "@/types/demo-shop";
 type MobileCTAProps = {
   shop: DemoShop;
   cartCount: number;
+  onOpenCart: () => void;
 };
 
-export default function MobileCTA({ shop, cartCount }: MobileCTAProps) {
+export default function MobileCTA({
+  shop,
+  cartCount,
+  onOpenCart,
+}: MobileCTAProps) {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/95 p-3 backdrop-blur-2xl md:hidden">
       <div className="grid grid-cols-3 gap-2">
@@ -25,7 +30,10 @@ export default function MobileCTA({ shop, cartCount }: MobileCTAProps) {
         >
           Zalo
         </a>
-        <button className="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-center text-xs font-black text-slate-950">
+        <button
+          onClick={onOpenCart}
+          className="rounded-2xl border border-slate-200 bg-white px-3 py-3 text-center text-xs font-black text-slate-950"
+        >
           Giỏ {cartCount}
         </button>
       </div>

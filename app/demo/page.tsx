@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import CartDrawer from "@/components/demo-shop/CartDrawer";
 import DemoHero from "@/components/demo-shop/DemoHero";
 import DemoProductGrid from "@/components/demo-shop/DemoProductGrid";
 import DemoShopHeader from "@/components/demo-shop/DemoShopHeader";
@@ -16,11 +17,23 @@ import {
   demoShop,
   demoTestimonials,
 } from "@/data/demo-shop";
+import {
+  addProductToCart,
+  decreaseCartItem,
+  getCartQuantity,
+  increaseCartItem,
+  removeCartItem,
+} from "@/lib/cart";
+import type { CartItem } from "@/types/cart";
+import type { DemoProduct } from "@/types/demo-shop";
 
 export default function DemoShopPage() {
   const [activeCategory, setActiveCategory] = useState("Tất cả");
   const [searchQuery, setSearchQuery] = useState("");
-  const [cartCount, setCartCount] = useState(0);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const cartCount = getCartQuantity(cartItems);
 
   const filteredProducts = useMemo(() => {
     const normalizedSearch = searchQuery.trim().toLowerCase();
@@ -44,8 +57,9 @@ export default function DemoShopPage() {
 
   const flashSaleProducts = demoProducts.filter((product) => product.isFlashSale);
 
-  const handleAddToCart = () => {
-    setCartCount((prev) => prev + 1);
+  const handleAddToCart = (product: DemoProduct) => {
+    setCartItems((currentItems) => addProductToCart(currentItems, product));
+    setIsCartOpen(true);
   };
 
   return (
@@ -56,6 +70,7 @@ export default function DemoShopPage() {
         searchQuery={searchQuery}
         cartCount={cartCount}
         onSearchChange={setSearchQuery}
+        onOpenCart={() => setIsCartOpen(true)}
       />
 
       <DemoHero shop={demoShop} products={demoProducts} />
@@ -79,7 +94,30 @@ export default function DemoShopPage() {
 
       <FAQSection faqs={demoFaqs} />
 
-      <MobileCTA shop={demoShop} cartCount={cartCount} />
+      <MobileCTA
+        shop={demoShop}
+        cartCount={cartCount}
+        onOpenCart={() => setIsCartOpen(true)}
+      />
+
+      <CartDrawer
+        isOpen={isCartOpen}
+        items={cartItems}
+        onClose={() => setIsCartOpen(false)}
+        onIncrease={(productId) =>
+          setCartItems((currentItems) =>
+            increaseCartItem(currentItems, productId)
+          )
+        }
+        onDecrease={(productId) =>
+          setCartItems((currentItems) =>
+            decreaseCartItem(currentItems, productId)
+          )
+        }
+        onRemove={(productId) =>
+          setCartItems((currentItems) => removeCartItem(currentItems, productId))
+        }
+      />
     </main>
   );
 }
