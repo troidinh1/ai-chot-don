@@ -1,51 +1,51 @@
 const heroStats = [
   {
-    value: "3 bước",
-    label: "tạo shop mini",
+    value: "01",
+    label: "Link bán hàng riêng",
   },
   {
     value: "AI",
-    label: "viết nội dung",
+    label: "hỗ trợ nội dung",
   },
   {
-    value: "Mobile",
-    label: "dùng như app",
+    value: "24/7",
+    label: "khách xem mọi lúc",
   },
 ];
 
 const activityItems = [
   {
-    title: "Ngọc Anh vừa đặt hàng",
-    desc: "Combo skincare sáng da - 399.000đ",
+    title: "Có đơn hàng mới",
+    desc: "Khách vừa đặt combo sản phẩm qua form",
     time: "1 phút trước",
   },
   {
-    title: "AI vừa tạo caption",
-    desc: "Caption TikTok cho serum sáng da",
+    title: "AI đã tạo nội dung",
+    desc: "Caption bán hàng cho sản phẩm mới",
     time: "3 phút trước",
   },
   {
-    title: "Shop có 8 đơn chờ gọi",
-    desc: "Ưu tiên xác nhận trong hôm nay",
+    title: "Đơn chờ xác nhận",
+    desc: "Ưu tiên gọi khách trong hôm nay",
     time: "5 phút trước",
   },
 ];
 
 const productCards = [
   {
-    name: "Serum Glow",
+    name: "Sản phẩm nổi bật",
     price: "189K",
     tag: "Hot",
   },
   {
-    name: "Toner Fresh",
-    price: "129K",
-    tag: "New",
+    name: "Combo bán chạy",
+    price: "299K",
+    tag: "Best",
   },
   {
-    name: "Sun Cream",
+    name: "Ưu đãi hôm nay",
     price: "159K",
-    tag: "Best",
+    tag: "Deal",
   },
 ];
 
@@ -57,40 +57,33 @@ export default function HeroSection() {
       <div className="absolute bottom-0 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-orange-400/10 blur-[150px]" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
           <div className="relative z-10">
-            <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/8 px-4 py-2 text-sm font-black text-emerald-200 shadow-2xl shadow-black/20 backdrop-blur-2xl">
+            <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.08] px-4 py-2 text-sm font-black text-emerald-200 shadow-2xl shadow-black/20 backdrop-blur-2xl">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-300 pulse-glow" />
-              AI commerce workspace cho shop nhỏ
+              Web app bán hàng mini cho shop nhỏ
             </div>
 
             <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.06em] text-white sm:text-6xl lg:text-7xl">
-              Một nơi để{" "}
-              <span className="gradient-text">bán hàng, chốt đơn</span> và tạo
-              nội dung bằng AI.
+              Biến shop online thành{" "}
+              <span className="gradient-text">cỗ máy chốt đơn</span> gọn nhẹ.
             </h1>
 
             <p className="mt-7 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-              Biến shop Facebook, TikTok, Zalo thành một web app bán hàng mini:
-              có trang sản phẩm, form đặt hàng, dashboard quản lý và AI hỗ trợ
-              viết caption, mô tả, tin nhắn chốt khách.
+              AI Chốt Đơn giúp shop có trang bán hàng riêng, nhận đơn qua form,
+              quản lý khách hàng trong dashboard và dùng AI để viết nội dung bán
+              hàng nhanh hơn trên Facebook, TikTok, Zalo.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#product"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-4 text-sm font-black text-slate-950 shadow-2xl shadow-emerald-500/20 transition hover:scale-[1.03] hover:bg-emerald-100"
-              >
-                Khám phá giao diện
-                <span className="transition group-hover:translate-x-1">→</span>
-              </a>
+             <a href="#product" className="btn-primary group">
+  <span>Xem giao diện mẫu</span>
+  <span className="transition group-hover:translate-x-1">→</span>
+</a>
 
-              <a
-                href="#features"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/8 px-7 py-4 text-sm font-black text-white backdrop-blur-2xl transition hover:scale-[1.03] hover:bg-white/14"
-              >
-                Xem cách hoạt động
-              </a>
+<a href="#pricing" className="btn-secondary">
+  Nhận tư vấn triển khai
+</a>
             </div>
 
             <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
@@ -124,26 +117,26 @@ function HeroVisual() {
         <div className="rounded-[2rem] bg-white p-4 text-slate-950">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <p className="text-lg font-black">Luna Beauty</p>
+              <p className="text-lg font-black">Shop của bạn</p>
               <p className="text-xs font-bold text-slate-500">
-                Mini shop online
+                Trang bán hàng online
               </p>
             </div>
 
             <div className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-700">
-              Open
+              Đang mở
             </div>
           </div>
 
           <div className="rounded-[1.7rem] bg-gradient-to-br from-slate-950 via-emerald-950 to-teal-700 p-5 text-white">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-emerald-200">
-              Flash deal
+              Ưu đãi hôm nay
             </p>
             <h2 className="mt-3 text-2xl font-black leading-tight">
-              Skincare sáng da cho nàng bận rộn
+              Sản phẩm nổi bật, khách đặt chỉ trong vài chạm
             </h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-emerald-50">
-              Combo bán chạy tuần này, shop gọi xác nhận nhanh.
+              Hiển thị sản phẩm, giá, ưu đãi và nút đặt hàng rõ ràng.
             </p>
           </div>
 
@@ -157,7 +150,7 @@ function HeroVisual() {
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-black">{product.name}</p>
                   <p className="text-xs font-bold text-slate-500">
-                    Mỹ phẩm chăm sóc da
+                    Có sẵn tại shop
                   </p>
                 </div>
                 <div className="text-right">
@@ -172,39 +165,39 @@ function HeroVisual() {
             ))}
           </div>
 
-          <button className="mt-4 w-full rounded-2xl bg-slate-950 px-4 py-3.5 text-sm font-black text-white">
-            Đặt hàng ngay
-          </button>
+         <button className="btn-dark mt-4 w-full">
+  Đặt hàng ngay
+</button>
         </div>
       </div>
 
       <div className="float-medium absolute left-0 top-20 z-30 hidden w-[285px] rounded-[2rem] border border-white/10 bg-white/10 p-4 shadow-2xl shadow-black/40 backdrop-blur-2xl md:block">
         <div className="mb-4 flex items-center justify-between">
-          <p className="text-sm font-black">AI Command</p>
+          <p className="text-sm font-black">Trợ lý AI bán hàng</p>
           <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-black text-emerald-300">
-            Ready
+            Sẵn sàng
           </span>
         </div>
 
         <div className="rounded-2xl bg-black/25 p-3">
           <p className="text-xs font-bold text-slate-400">Yêu cầu</p>
           <p className="mt-2 text-sm font-bold leading-6">
-            Viết caption TikTok cho serum sáng da, khách nữ 18-30 tuổi.
+            Viết caption bán hàng cho sản phẩm mới, giọng tự nhiên, dễ chốt đơn.
           </p>
         </div>
 
         <div className="mt-3 rounded-2xl border border-emerald-300/20 bg-emerald-300/10 p-3">
-          <p className="text-xs font-bold text-emerald-200">AI trả về</p>
+          <p className="text-xs font-bold text-emerald-200">AI gợi ý</p>
           <p className="mt-2 text-sm font-bold leading-6">
-            “Da xỉn màu sau những ngày bận rộn? Đây là combo giúp nàng lấy lại
-            vẻ căng mướt...”
+            “Khách hỏi nhiều nhất tuần này đây ạ. Sản phẩm phù hợp cho ai muốn
+            mua nhanh, xem rõ giá và đặt hàng tiện hơn...”
           </p>
         </div>
       </div>
 
       <div className="absolute bottom-16 right-0 z-30 hidden w-[320px] rounded-[2rem] border border-white/10 bg-white/10 p-4 shadow-2xl shadow-black/40 backdrop-blur-2xl md:block">
         <div className="mb-4 flex items-center justify-between">
-          <p className="text-sm font-black">Live Activity</p>
+          <p className="text-sm font-black">Hoạt động mới</p>
           <span className="rounded-full bg-orange-400 px-3 py-1 text-xs font-black text-slate-950">
             8 đơn mới
           </span>

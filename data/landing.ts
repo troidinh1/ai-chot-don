@@ -18,19 +18,19 @@ export const metrics = [
 
 export const orders = [
   {
-    customer: "Ngọc Anh",
-    product: "Combo skincare sáng da",
+    customer: "Khách hàng mới",
+    product: "Combo chăm sóc da",
     amount: "399.000đ",
-    status: "Đơn mới",
+    status: "Chờ xác nhận",
   },
   {
-    customer: "Minh Thư",
+    customer: "Khách đặt lại",
     product: "Kem chống nắng nâng tone",
     amount: "189.000đ",
     status: "Đã xác nhận",
   },
   {
-    customer: "Hoài Linh",
+    customer: "Khách từ TikTok",
     product: "Set dưỡng ẩm mini",
     amount: "259.000đ",
     status: "Đang giao",
@@ -39,72 +39,76 @@ export const orders = [
 
 export const features = [
   {
-    eyebrow: "Shop mini",
-    title: "Một link bán hàng riêng cho từng shop",
+    eyebrow: "Cửa hàng mini",
+    title: "Một link bán hàng riêng cho shop",
     description:
-      "Hiển thị sản phẩm, giá, ảnh, feedback, FAQ, nút Zalo và form đặt hàng trong một giao diện đẹp trên điện thoại.",
+      "Tạo trang bán hàng chuyên nghiệp với sản phẩm, giá, ảnh, feedback, FAQ, nút Zalo và form đặt hàng rõ ràng trên điện thoại.",
   },
   {
-    eyebrow: "Admin",
-    title: "Quản lý đơn, khách hàng và doanh thu",
+    eyebrow: "Quản trị bán hàng",
+    title: "Theo dõi đơn hàng, khách hàng và doanh thu",
     description:
-      "Chủ shop xem đơn mới, cập nhật trạng thái, lưu khách cũ và theo dõi hiệu quả bán hàng mỗi ngày.",
+      "Chủ shop dễ dàng xem đơn mới, cập nhật trạng thái, lưu khách cũ, theo dõi doanh thu và chăm sóc lại khách hàng.",
   },
   {
-    eyebrow: "AI sales",
-    title: "AI viết caption, mô tả và tin nhắn chốt đơn",
+    eyebrow: "AI chốt đơn",
+    title: "Tạo nội dung bán hàng nhanh hơn bằng AI",
     description:
-      "Từ thông tin sản phẩm, AI tạo nội dung bán hàng cho Facebook, TikTok, Zalo và gợi ý câu trả lời inbox.",
+      "AI hỗ trợ viết caption, mô tả sản phẩm, tin nhắn trả lời khách và kịch bản video TikTok để shop bán hàng đều hơn.",
   },
 ];
 
 export const shopTypes = [
-  "Mỹ phẩm",
-  "Thời trang nữ",
+  "Shop mỹ phẩm",
+  "Shop thời trang",
   "Đồ ăn vặt",
-  "Đặc sản",
-  "Phụ kiện",
-  "Mẹ & bé",
+  "Đặc sản địa phương",
+  "Phụ kiện handmade",
+  "Shop mẹ & bé",
 ];
 
 export const roadmapItems = [
   {
     number: "01",
-    title: "Visual MVP",
-    description: "Landing + shop demo + product preview + mobile UI.",
+    title: "Giao diện bán hàng",
+    description:
+      "Thiết kế trang bán hàng riêng cho shop, tối ưu trên điện thoại và dễ gửi cho khách.",
   },
   {
     number: "02",
-    title: "Commerce Flow",
-    description: "Giỏ hàng, checkout, trang thành công, mã đơn.",
+    title: "Luồng đặt hàng",
+    description:
+      "Khách xem sản phẩm, chọn mua, gửi thông tin và nhận xác nhận đơn hàng rõ ràng.",
   },
   {
     number: "03",
-    title: "Admin System",
-    description: "Quản lý sản phẩm, đơn hàng, khách hàng, doanh thu.",
+    title: "Trang quản trị",
+    description:
+      "Chủ shop quản lý sản phẩm, đơn hàng, khách hàng và doanh thu trong một dashboard.",
   },
   {
     number: "04",
-    title: "AI Sales Tools",
-    description: "Caption, mô tả sản phẩm, tin nhắn inbox, kịch bản TikTok.",
+    title: "Công cụ AI bán hàng",
+    description:
+      "AI hỗ trợ tạo caption, mô tả sản phẩm, tin nhắn inbox và kịch bản TikTok bán hàng.",
   },
 ];
 
 export const demoProducts = [
   {
-    name: "Serum",
+    name: "Sản phẩm nổi bật",
     price: "189K",
   },
   {
-    name: "Toner",
-    price: "129K",
+    name: "Combo bán chạy",
+    price: "299K",
   },
   {
-    name: "Sữa rửa mặt",
-    price: "99K",
-  },
-  {
-    name: "Kem chống nắng",
+    name: "Ưu đãi hôm nay",
     price: "159K",
+  },
+  {
+    name: "Gói tiết kiệm",
+    price: "399K",
   },
 ];
