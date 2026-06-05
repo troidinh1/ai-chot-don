@@ -1,4 +1,6 @@
-export const demoShop = {
+import type { DemoFaq, DemoProduct, DemoShop, DemoTestimonial } from "@/types/demo-shop";
+
+export const demoShop: DemoShop = {
   name: "Luna Beauty",
   slogan: "Mỹ phẩm chính hãng cho nàng bận rộn",
   description:
@@ -18,7 +20,7 @@ export const demoCategories = [
   "Bán chạy",
 ];
 
-export const demoProducts = [
+export const demoProducts: DemoProduct[] = [
   {
     id: 1,
     name: "Serum sáng da Glow C",
@@ -133,7 +135,7 @@ export const demoProducts = [
   },
 ];
 
-export const demoTestimonials = [
+export const demoTestimonials: DemoTestimonial[] = [
   {
     name: "Minh Anh",
     content:
@@ -151,7 +153,7 @@ export const demoTestimonials = [
   },
 ];
 
-export const demoFaqs = [
+export const demoFaqs: DemoFaq[] = [
   {
     question: "Shop có gọi xác nhận đơn không?",
     answer:
