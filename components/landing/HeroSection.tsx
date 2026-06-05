@@ -76,8 +76,8 @@ export default function HeroSection() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-             <a href="#product" className="btn-primary group">
-  <span>Xem giao diện mẫu</span>
+             <a href="/demo" className="btn-primary group">
+  <span>Xem shop mẫu</span>
   <span className="transition group-hover:translate-x-1">→</span>
 </a>
 
