@@ -127,3 +127,33 @@ export type AiGeneration = {
   output: string;
   created_at: string;
 };
+export type CheckoutSessionStatus = "draft" | "submitted" | "expired";
+
+export type CheckoutSession = {
+  id: string;
+  shop_id: string;
+  status: CheckoutSessionStatus;
+  subtotal: number;
+  shipping_fee: number;
+  total: number;
+  expires_at: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type CheckoutItem = {
+  id: string;
+  checkout_session_id: string;
+  shop_id: string;
+  product_id: string | null;
+  product_name: string;
+  product_slug: string | null;
+  unit_price: number;
+  quantity: number;
+  line_total: number;
+  created_at: string;
+};
+
+export type CheckoutSessionWithItems = CheckoutSession & {
+  items: CheckoutItem[];
+};

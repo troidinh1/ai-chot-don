@@ -123,3 +123,37 @@ export async function getDemoFeaturedProducts(): Promise<
 
   return (data ?? []) as ProductWithCategory[];
 }
+
+import type { CheckoutSessionWithItems } from "@/types/database";
+
+export async function getCheckoutSession(
+  checkoutId: string
+): Promise<CheckoutSessionWithItems> {
+  const { data: session, error: sessionError } = await supabaseAdmin
+    .from("checkout_sessions")
+    .select("*")
+    .eq("id", checkoutId)
+    .eq("status", "draft")
+    .single();
+
+  if (sessionError || !session) {
+    throw new Error(
+      sessionError?.message ?? "Không tìm thấy phiên checkout."
+    );
+  }
+
+  const { data: items, error: itemError } = await supabaseAdmin
+    .from("checkout_items")
+    .select("*")
+    .eq("checkout_session_id", checkoutId)
+    .order("created_at", { ascending: true });
+
+  if (itemError) {
+    throw new Error(itemError.message);
+  }
+
+  return {
+    ...session,
+    items: items ?? [],
+  } as CheckoutSessionWithItems;
+}
