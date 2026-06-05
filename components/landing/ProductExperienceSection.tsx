@@ -69,9 +69,7 @@ function MobileShopMockup() {
             ))}
           </div>
 
-         <button className="btn-dark mt-4 w-full">
-  Gửi đơn đặt hàng
-</button>
+          <button className="btn-dark mt-4 w-full">Gửi đơn đặt hàng</button>
 
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button className="rounded-2xl bg-emerald-100 px-3 py-3 text-xs font-black text-emerald-800">
@@ -85,7 +83,9 @@ function MobileShopMockup() {
       </div>
 
       <div className="mt-6">
-        <p className="text-xl font-black">Trang bán hàng tối ưu cho điện thoại</p>
+        <p className="text-xl font-black">
+          Trang bán hàng tối ưu cho điện thoại
+        </p>
         <p className="mt-2 text-sm leading-7 text-slate-400">
           Shop có một link riêng để gửi cho khách, gắn vào bio TikTok, Facebook,
           Zalo hoặc Google Maps.
@@ -118,26 +118,30 @@ function AdminFlowMockup() {
           </p>
 
           <div className="mt-6 space-y-3">
-            {["Sản phẩm mới", "Combo bán chạy", "Ưu đãi hôm nay"].map((item) => (
-              <div
-                key={item}
-                className="flex items-center justify-between rounded-2xl bg-black/20 p-3"
-              >
-                <span className="text-sm font-bold">{item}</span>
-                <span className="rounded-full bg-emerald-400/10 px-2 py-1 text-xs font-black text-emerald-300">
-                  Đang bán
-                </span>
-              </div>
-            ))}
+            {["Sản phẩm mới", "Combo bán chạy", "Ưu đãi hôm nay"].map(
+              (item) => (
+                <div
+                  key={item}
+                  className="flex items-center justify-between rounded-2xl bg-black/20 p-3"
+                >
+                  <span className="text-sm font-bold">{item}</span>
+                  <span className="rounded-full bg-emerald-400/10 px-2 py-1 text-xs font-black text-emerald-300">
+                    Đang bán
+                  </span>
+                </div>
+              ),
+            )}
           </div>
         </div>
 
         <div className="rounded-[2rem] border border-white/10 bg-white/[0.08] p-5">
           <p className="text-sm font-black text-orange-300">02 / Đơn hàng</p>
-          <h3 className="mt-3 text-2xl font-black">Theo dõi đơn rõ trạng thái</h3>
+          <h3 className="mt-3 text-2xl font-black">
+            Theo dõi đơn rõ trạng thái
+          </h3>
           <p className="mt-3 text-sm leading-7 text-slate-400">
-            Mỗi đơn có mã đơn, thông tin khách, sản phẩm, tổng tiền và trạng thái
-            xử lý.
+            Mỗi đơn có mã đơn, thông tin khách, sản phẩm, tổng tiền và trạng
+            thái xử lý.
           </p>
 
           <div className="mt-6 rounded-2xl bg-black/20 p-4">
