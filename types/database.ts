@@ -157,6 +157,13 @@ export type CheckoutItem = {
 export type CheckoutSessionWithItems = CheckoutSession & {
   items: CheckoutItem[];
 };
+
 export type OrderWithItems = Order & {
   items: OrderItem[];
+};
+
+export type AdminOrderAIResult = {
+  confirmationMessage: string;
+  thankYouMessage: string;
+  upsellSuggestion: string;
 };

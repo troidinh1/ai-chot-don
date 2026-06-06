@@ -1,5 +1,11 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import type { Category, ProductWithCategory, Shop } from "@/types/database";
+import type {
+  Category,
+  CheckoutSessionWithItems,
+  OrderWithItems,
+  ProductWithCategory,
+  Shop,
+} from "@/types/database";
 
 const DEMO_SHOP_SLUG = "luna-beauty";
 
@@ -124,8 +130,6 @@ export async function getDemoFeaturedProducts(): Promise<
   return (data ?? []) as ProductWithCategory[];
 }
 
-import type { CheckoutSessionWithItems } from "@/types/database";
-
 export async function getCheckoutSession(
   checkoutId: string
 ): Promise<CheckoutSessionWithItems> {
@@ -158,9 +162,68 @@ export async function getCheckoutSession(
   } as CheckoutSessionWithItems;
 }
 
-import type { OrderWithItems } from "@/types/database";
-
 export async function getOrderById(orderId: string): Promise<OrderWithItems> {
+  const { data: order, error: orderError } = await supabaseAdmin
+    .from("orders")
+    .select("*")
+    .eq("id", orderId)
+    .single();
+
+  if (orderError || !order) {
+    throw new Error(orderError?.message ?? "Không tìm thấy đơn hàng.");
+  }
+
+  const { data: items, error: itemsError } = await supabaseAdmin
+    .from("order_items")
+    .select("*")
+    .eq("order_id", orderId)
+    .order("created_at", { ascending: true });
+
+  if (itemsError) {
+    throw new Error(itemsError.message);
+  }
+
+  return {
+    ...order,
+    items: items ?? [],
+  } as OrderWithItems;
+}
+
+export async function getAdminOrders(): Promise<OrderWithItems[]> {
+  const { data: orders, error: ordersError } = await supabaseAdmin
+    .from("orders")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (ordersError) {
+    throw new Error(`Cannot get admin orders: ${ordersError.message}`);
+  }
+
+  const orderIds = (orders ?? []).map((order) => order.id);
+
+  if (orderIds.length === 0) {
+    return [];
+  }
+
+  const { data: items, error: itemsError } = await supabaseAdmin
+    .from("order_items")
+    .select("*")
+    .in("order_id", orderIds)
+    .order("created_at", { ascending: true });
+
+  if (itemsError) {
+    throw new Error(`Cannot get order items: ${itemsError.message}`);
+  }
+
+  return (orders ?? []).map((order) => ({
+    ...order,
+    items: (items ?? []).filter((item) => item.order_id === order.id),
+  })) as OrderWithItems[];
+}
+
+export async function getAdminOrderById(
+  orderId: string
+): Promise<OrderWithItems> {
   const { data: order, error: orderError } = await supabaseAdmin
     .from("orders")
     .select("*")
