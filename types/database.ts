@@ -167,3 +167,31 @@ export type AdminOrderAIResult = {
   thankYouMessage: string;
   upsellSuggestion: string;
 };
+
+export type AdminProductFormPayload = {
+  name: string;
+  slug?: string;
+  categoryId?: string | null;
+  shortDescription?: string | null;
+  description?: string | null;
+  price: number;
+  oldPrice?: number | null;
+  stock: number;
+  badge?: string | null;
+  imageUrl?: string | null;
+  isFeatured: boolean;
+  isFlashSale: boolean;
+  isActive: boolean;
+};
+
+export type AdminProductAIResult = {
+  productDescription: string;
+  salesCaption: string;
+  upsellSuggestion: string;
+};
+
+export type ProductCategoryLite = {
+  id: string;
+  name: string;
+  slug: string;
+};

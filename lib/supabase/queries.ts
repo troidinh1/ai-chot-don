@@ -249,3 +249,65 @@ export async function getAdminOrderById(
     items: items ?? [],
   } as OrderWithItems;
 }
+
+export async function getAdminProductsPageData() {
+  const shop = await getDemoShop();
+
+  const { data: products, error: productsError } = await supabaseAdmin
+    .from("products")
+    .select(
+      `
+      *,
+      category:categories (
+        id,
+        name,
+        slug
+      )
+    `
+    )
+    .eq("shop_id", shop.id)
+    .order("created_at", { ascending: false });
+
+  if (productsError) {
+    throw new Error(`Cannot get admin products: ${productsError.message}`);
+  }
+
+  const { data: categories, error: categoriesError } = await supabaseAdmin
+    .from("categories")
+    .select("*")
+    .eq("shop_id", shop.id)
+    .order("sort_order", { ascending: true });
+
+  if (categoriesError) {
+    throw new Error(`Cannot get admin categories: ${categoriesError.message}`);
+  }
+
+  return {
+    shop,
+    products: products ?? [],
+    categories: categories ?? [],
+  };
+}
+
+export async function getAdminProductById(productId: string) {
+  const { data: product, error } = await supabaseAdmin
+    .from("products")
+    .select(
+      `
+      *,
+      category:categories (
+        id,
+        name,
+        slug
+      )
+    `
+    )
+    .eq("id", productId)
+    .single();
+
+  if (error || !product) {
+    throw new Error(error?.message ?? "Không tìm thấy sản phẩm.");
+  }
+
+  return product;
+}
