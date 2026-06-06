@@ -1,7 +1,7 @@
-import type { CartItem } from "@/types/cart";
 import type { DemoProduct } from "@/types/demo-shop";
+import type { CartItem } from "@/types/cart";
 
-export function addProductToCart(
+export function addToCart(
   currentItems: CartItem[],
   product: DemoProduct
 ): CartItem[] {
@@ -31,7 +31,7 @@ export function addProductToCart(
 
 export function increaseCartItem(
   currentItems: CartItem[],
-  productId: number
+  productId: string
 ): CartItem[] {
   return currentItems.map((item) =>
     item.product.id === productId
@@ -45,7 +45,7 @@ export function increaseCartItem(
 
 export function decreaseCartItem(
   currentItems: CartItem[],
-  productId: number
+  productId: string
 ): CartItem[] {
   return currentItems
     .map((item) =>
@@ -59,20 +59,52 @@ export function decreaseCartItem(
     .filter((item) => item.quantity > 0);
 }
 
+export function updateCartItemQuantity(
+  currentItems: CartItem[],
+  productId: string,
+  quantity: number
+): CartItem[] {
+  if (quantity <= 0) {
+    return removeCartItem(currentItems, productId);
+  }
+
+  return currentItems.map((item) =>
+    item.product.id === productId
+      ? {
+          ...item,
+          quantity,
+        }
+      : item
+  );
+}
+
 export function removeCartItem(
   currentItems: CartItem[],
-  productId: number
+  productId: string
 ): CartItem[] {
   return currentItems.filter((item) => item.product.id !== productId);
 }
 
-export function getCartTotal(items: CartItem[]) {
+export function clearCart(): CartItem[] {
+  return [];
+}
+
+export function getCartCount(items: CartItem[]): number {
+  return items.reduce((total, item) => total + item.quantity, 0);
+}
+
+export function getCartSubtotal(items: CartItem[]): number {
   return items.reduce(
     (total, item) => total + item.product.price * item.quantity,
     0
   );
 }
 
-export function getCartQuantity(items: CartItem[]) {
-  return items.reduce((total, item) => total + item.quantity, 0);
+export function getCartItemQuantity(
+  items: CartItem[],
+  productId: string
+): number {
+  return (
+    items.find((item) => item.product.id === productId)?.quantity ?? 0
+  );
 }

@@ -121,7 +121,7 @@ export default function CartDrawer({
                     <div className="flex gap-4">
                       <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-50 to-amber-50">
                         <ProductIcon
-                          imageUrl={line.product.imageUrl}
+                          imageUrl={line.product.imageUrl ?? null}
                           name={line.product.name}
                           size="sm"
                         />
