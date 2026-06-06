@@ -35,7 +35,7 @@ export default function DemoShopClient({
 
   const featuredProducts = useMemo(() => {
     const featured = products.filter((product) => product.isFeatured);
-    return featured.length > 0 ? featured : products.slice(0, 4);
+    return featured.length > 0 ? featured.slice(0, 4) : products.slice(0, 4);
   }, [products]);
 
   const flashSaleProducts = useMemo(() => {
@@ -102,7 +102,7 @@ export default function DemoShopClient({
   }
 
   return (
-    <main className="min-h-screen bg-[#f6f2ec] pb-24 text-slate-950 lg:pb-0">
+    <main className="min-h-screen bg-[#f7f5ef] pb-24 text-slate-950 lg:pb-0">
       <DemoShopHeader
         shop={shop}
         searchValue={searchValue}

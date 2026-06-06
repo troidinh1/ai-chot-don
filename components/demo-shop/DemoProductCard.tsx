@@ -25,22 +25,22 @@ export default function DemoProductCard({
   return (
     <article
       className={`group overflow-hidden rounded-[1.6rem] border bg-white shadow-[0_8px_24px_rgba(15,23,42,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.10)] ${
-        variant === "sale" ? "border-[#efd9bd]" : "border-[#eadfce]"
+        variant === "sale" ? "border-amber-200/70" : "border-stone-200"
       }`}
     >
-      <div className="relative bg-[#fffdf8] p-4">
-        <div className="relative flex h-44 items-center justify-center rounded-[1.25rem] bg-gradient-to-br from-[#effaf3] to-[#fff7ed]">
+      <div className="relative bg-white p-4">
+        <div className="relative flex h-44 items-center justify-center rounded-[1.25rem] bg-gradient-to-br from-emerald-50 to-amber-50">
           <ProductIcon imageUrl={product.imageUrl} name={product.name} />
         </div>
 
         {percent && (
-          <span className="absolute left-4 top-4 rounded-full bg-[#fff1df] px-3 py-1 text-xs font-black text-[#c65a12]">
+          <span className="absolute left-4 top-4 rounded-full bg-amber-100 px-3 py-1 text-xs font-black text-amber-700">
             -{percent}%
           </span>
         )}
 
         {product.badge && (
-          <span className="absolute right-4 top-4 rounded-full bg-[#07111f] px-3 py-1 text-[11px] font-bold text-white">
+          <span className="absolute right-4 top-4 rounded-full bg-slate-950 px-3 py-1 text-[11px] font-bold text-white">
             {product.badge}
           </span>
         )}
@@ -56,7 +56,7 @@ export default function DemoProductCard({
         </p>
 
         <div className="mt-3 flex items-end gap-2">
-          <p className="text-2xl font-black tracking-[-0.03em] text-[#e11d48]">
+          <p className="text-2xl font-black tracking-[-0.03em] text-rose-600">
             {formatCurrency(product.price)}
           </p>
 
@@ -70,7 +70,7 @@ export default function DemoProductCard({
         <div className="mt-4">
           <div className="h-2.5 overflow-hidden rounded-full bg-slate-200">
             <div
-              className="h-full rounded-full bg-[#d97706]"
+              className="h-full rounded-full bg-amber-600"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -83,7 +83,7 @@ export default function DemoProductCard({
         <button
           type="button"
           onClick={() => onAddToCart(product)}
-          className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-[#07111f] px-4 py-3.5 text-sm font-black text-white transition hover:bg-slate-800"
+          className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-slate-950 px-4 py-3.5 text-sm font-black text-white transition hover:bg-slate-800"
         >
           <span className="solid-white-text">Mua ngay</span>
         </button>

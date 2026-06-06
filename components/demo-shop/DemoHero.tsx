@@ -22,15 +22,15 @@ export default function DemoHero({
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-[linear-gradient(135deg,#fff8ef_0%,#fffdf8_45%,#eefdf6_100%)] px-4 py-10 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-[linear-gradient(135deg,#fffaf3_0%,#ffffff_46%,#eefdf6_100%)] px-4 py-10 sm:px-6 lg:px-8"
     >
-      <div className="absolute right-[-180px] top-[-180px] h-[460px] w-[460px] rounded-full bg-emerald-300/20 blur-[130px]" />
-      <div className="absolute left-[-160px] bottom-[-180px] h-[360px] w-[360px] rounded-full bg-orange-300/15 blur-[120px]" />
+      <div className="absolute -right-40 -top-40 h-[420px] w-[420px] rounded-full bg-emerald-200/30 blur-[120px]" />
+      <div className="absolute -bottom-44 -left-40 h-[360px] w-[360px] rounded-full bg-amber-200/30 blur-[120px]" />
 
       <div className="relative mx-auto grid max-w-7xl items-stretch gap-6 lg:grid-cols-[0.82fr_1.18fr]">
         <div className="flex flex-col justify-between rounded-[2rem] border border-white bg-white/95 p-5 shadow-xl shadow-slate-900/5 sm:p-7 lg:min-h-[520px]">
           <div>
-            <div className="inline-flex rounded-full bg-[#fff1df] px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#c65a12]">
+            <div className="inline-flex rounded-full bg-amber-100 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-700">
               Deal online hôm nay
             </div>
 
@@ -53,7 +53,7 @@ export default function DemoHero({
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <a
               href="#flash-sale"
-              className="inline-flex items-center justify-center rounded-2xl bg-[#07111f] px-6 py-4 text-sm font-black text-white shadow-lg shadow-slate-950/15 transition hover:bg-slate-800"
+              className="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-6 py-4 text-sm font-black text-white shadow-lg shadow-slate-950/15 transition hover:bg-slate-800"
             >
               <span className="solid-white-text">Xem flash sale</span>
             </a>
@@ -62,16 +62,16 @@ export default function DemoHero({
               href={shop.zalo_url ?? "https://zalo.me/0768414111"}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-2xl border border-[#eadfce] bg-white px-6 py-4 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#fffaf3]"
+              className="inline-flex items-center justify-center rounded-2xl border border-stone-200 bg-white px-6 py-4 text-sm font-black text-slate-950 shadow-sm transition hover:bg-stone-50"
             >
               Tư vấn qua Zalo
             </a>
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-[2rem] bg-[#07111f] p-3 shadow-2xl shadow-slate-900/15 lg:min-h-[520px]">
+        <div className="overflow-hidden rounded-[2rem] bg-slate-950 p-3 shadow-2xl shadow-slate-900/15 lg:min-h-[520px]">
           <div className="flex h-full flex-col">
-            <div className="rounded-[1.6rem] bg-[#c86a24] p-6 text-white">
+            <div className="rounded-[1.6rem] bg-amber-700 p-6 text-white">
               <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.24em] text-white/80">
@@ -115,7 +115,7 @@ export default function DemoHero({
                 <button
                   type="button"
                   onClick={() => onAddToCart(mainProduct)}
-                  className="rounded-2xl bg-white px-6 py-4 text-sm font-black text-slate-950 shadow-lg transition hover:bg-[#fff7ed] sm:min-w-[220px]"
+                  className="rounded-2xl bg-white px-6 py-4 text-sm font-black text-slate-950 shadow-lg transition hover:bg-amber-50 sm:min-w-[220px]"
                 >
                   Thêm deal vào giỏ
                 </button>
@@ -136,7 +136,7 @@ export default function DemoHero({
 
 function HeroMetric({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-[#eadfce] bg-[#fffdf8] px-4 py-4">
+    <div className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-4">
       <p className="text-3xl font-black tracking-[-0.04em] text-slate-950">
         {value}
       </p>
@@ -160,9 +160,9 @@ function TopDealCard({
     <button
       type="button"
       onClick={() => onAddToCart(product)}
-      className="group rounded-2xl border border-[#eadfce] bg-[#fffdf8] p-3 text-left transition hover:-translate-y-1 hover:border-[#d8c8b5] hover:bg-white hover:shadow-lg"
+      className="group rounded-2xl border border-stone-200 bg-stone-50 p-3 text-left transition hover:-translate-y-1 hover:bg-white hover:shadow-lg"
     >
-      <div className="relative flex h-24 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-50 to-orange-50">
+      <div className="relative flex h-24 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-50 to-amber-50">
         <ProductIcon
           imageUrl={product.imageUrl}
           name={product.name}
@@ -170,7 +170,7 @@ function TopDealCard({
         />
 
         {percent && (
-          <span className="absolute right-2 top-2 rounded-full bg-[#fff1df] px-2 py-1 text-[10px] font-black text-[#c65a12]">
+          <span className="absolute right-2 top-2 rounded-full bg-amber-100 px-2 py-1 text-[10px] font-black text-amber-700">
             -{percent}%
           </span>
         )}
@@ -181,7 +181,7 @@ function TopDealCard({
       </h3>
 
       <div className="mt-2 flex items-center gap-2">
-        <p className="text-sm font-black text-[#e11d48]">
+        <p className="text-sm font-black text-rose-600">
           {formatCurrency(product.price)}
         </p>
 

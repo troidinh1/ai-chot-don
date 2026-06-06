@@ -78,12 +78,12 @@ export default function CartDrawer({
       />
 
       <aside
-        className={`absolute right-0 top-0 h-full w-full max-w-md bg-[#fffdf8] shadow-2xl transition duration-300 ${
+        className={`absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl transition duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between border-b border-[#eadfce] px-5 py-5">
+          <div className="flex items-center justify-between border-b border-stone-200 px-5 py-5">
             <div>
               <p className="text-2xl font-black text-slate-950">Giỏ hàng</p>
               <p className="mt-1 text-sm font-bold text-slate-500">
@@ -94,7 +94,7 @@ export default function CartDrawer({
             <button
               type="button"
               onClick={onClose}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f6f2ec] text-xl font-black text-slate-700 transition hover:bg-[#efe4d5]"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-stone-100 text-xl font-black text-slate-700 transition hover:bg-stone-200"
               aria-label="Đóng giỏ hàng"
             >
               ×
@@ -103,7 +103,7 @@ export default function CartDrawer({
 
           <div className="flex-1 overflow-y-auto px-5 py-5">
             {cartLines.length === 0 ? (
-              <div className="rounded-[2rem] border border-dashed border-[#d8c8b5] bg-white p-8 text-center">
+              <div className="rounded-[2rem] border border-dashed border-stone-300 bg-stone-50 p-8 text-center">
                 <p className="text-lg font-black text-slate-950">
                   Giỏ hàng đang trống
                 </p>
@@ -116,10 +116,10 @@ export default function CartDrawer({
                 {cartLines.map((line) => (
                   <div
                     key={line.product.id}
-                    className="rounded-[1.5rem] border border-[#eadfce] bg-white p-4 shadow-sm"
+                    className="rounded-[1.5rem] border border-stone-200 bg-white p-4 shadow-sm"
                   >
                     <div className="flex gap-4">
-                      <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-50 to-orange-50">
+                      <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-50 to-amber-50">
                         <ProductIcon
                           imageUrl={line.product.imageUrl}
                           name={line.product.name}
@@ -132,7 +132,7 @@ export default function CartDrawer({
                           {line.product.name}
                         </p>
 
-                        <p className="mt-2 text-lg font-black text-[#e11d48]">
+                        <p className="mt-2 text-lg font-black text-rose-600">
                           {formatCurrency(line.product.price)}
                         </p>
 
@@ -146,7 +146,7 @@ export default function CartDrawer({
                                   line.quantity - 1,
                                 )
                               }
-                              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f6f2ec] font-black text-slate-800 transition hover:bg-[#eadfce]"
+                              className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-100 font-black text-slate-800 transition hover:bg-stone-200"
                               aria-label="Giảm số lượng"
                             >
                               -
@@ -164,7 +164,7 @@ export default function CartDrawer({
                                   line.quantity + 1,
                                 )
                               }
-                              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#07111f] font-black text-white transition hover:bg-slate-800"
+                              className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 font-black text-white transition hover:bg-slate-800"
                               aria-label="Tăng số lượng"
                             >
                               +
@@ -183,7 +183,7 @@ export default function CartDrawer({
             )}
           </div>
 
-          <div className="border-t border-[#eadfce] bg-white p-5">
+          <div className="border-t border-stone-200 bg-white p-5">
             <div className="mb-4 space-y-3">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-bold text-slate-500">Tạm tính</p>
@@ -206,7 +206,7 @@ export default function CartDrawer({
               type="button"
               disabled={cartLines.length === 0 || isCreatingCheckout}
               onClick={handleGoToCheckout}
-              className="w-full rounded-2xl bg-[#07111f] px-5 py-4 text-sm font-black text-white shadow-lg shadow-slate-950/10 transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none"
+              className="w-full rounded-2xl bg-slate-950 px-5 py-4 text-sm font-black text-white shadow-lg shadow-slate-950/10 transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none"
             >
               <span className="solid-white-text">
                 {isCreatingCheckout ? "Đang tạo đơn..." : "Tiến hành đặt hàng"}

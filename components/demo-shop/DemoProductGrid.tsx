@@ -21,8 +21,8 @@ export default function DemoProductGrid({
   return (
     <section id="products" className="px-4 pb-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="overflow-hidden rounded-[2rem] border border-[#eadfce] bg-[#fffdf8] shadow-xl shadow-slate-900/5">
-          <div className="flex flex-col justify-between gap-5 border-b border-[#eadfce] bg-white/80 p-5 sm:p-7 lg:flex-row lg:items-end">
+        <div className="overflow-hidden rounded-[2rem] border border-stone-200 bg-white shadow-xl shadow-slate-900/5">
+          <div className="flex flex-col justify-between gap-5 border-b border-stone-200 bg-white p-5 sm:p-7 lg:flex-row lg:items-end">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.24em] text-emerald-700">
                 Sản phẩm
@@ -38,7 +38,7 @@ export default function DemoProductGrid({
             </p>
           </div>
 
-          <div className="sticky top-[78px] z-20 border-b border-[#eadfce] bg-[#fffdf8]/95 px-5 py-4 backdrop-blur-xl sm:px-7">
+          <div className="sticky top-[78px] z-20 border-b border-stone-200 bg-white/95 px-5 py-4 backdrop-blur-xl sm:px-7">
             <div className="flex gap-3 overflow-x-auto pb-1">
               {categories.map((category) => (
                 <button
@@ -47,8 +47,8 @@ export default function DemoProductGrid({
                   onClick={() => onCategoryChange(category.slug)}
                   className={`shrink-0 rounded-full border px-5 py-3 text-sm font-black transition ${
                     activeCategory === category.slug
-                      ? "border-[#07111f] bg-[#07111f] text-white"
-                      : "border-[#eadfce] bg-white text-slate-700 hover:border-[#d8c8b5]"
+                      ? "border-slate-950 bg-slate-950 text-white"
+                      : "border-stone-200 bg-white text-slate-700 hover:border-stone-300 hover:bg-stone-50"
                   }`}
                 >
                   {category.name}
@@ -69,7 +69,7 @@ export default function DemoProductGrid({
 
           {products.length === 0 && (
             <div className="p-6">
-              <div className="rounded-[2rem] border border-dashed border-[#d8c8b5] bg-white p-8 text-center">
+              <div className="rounded-[2rem] border border-dashed border-stone-300 bg-stone-50 p-8 text-center">
                 <p className="text-lg font-black text-slate-950">
                   Không tìm thấy sản phẩm phù hợp
                 </p>

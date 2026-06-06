@@ -9,14 +9,14 @@ const faqs = [
   },
   {
     q: "Bước tiếp theo của web app là gì?",
-    a: "Làm checkout thật để lưu orders, order_items và customers vào Supabase.",
+    a: "Làm admin orders AI-first để chủ shop xem đơn, xử lý đơn và dùng AI tạo tin nhắn chốt đơn.",
   },
 ];
 
 export default function FAQSection() {
   return (
     <section id="faq" className="px-4 pb-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl rounded-[2rem] bg-[#07111f] p-5 text-white shadow-xl shadow-slate-900/10 sm:p-7">
+      <div className="mx-auto max-w-7xl rounded-[2rem] bg-slate-950 p-5 text-white shadow-xl shadow-slate-900/10 sm:p-7">
         <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.24em] text-emerald-300">

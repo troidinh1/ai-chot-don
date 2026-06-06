@@ -19,14 +19,14 @@ const items = [
 
 export default function TrustStrip() {
   return (
-    <section className="bg-[#f6f2ec] px-4 py-6 sm:px-6 lg:px-8">
+    <section className="bg-[#f7f5ef] px-4 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item) => (
           <div
             key={item.title}
-            className="group flex items-center gap-4 rounded-2xl border border-[#eadfce] bg-[#fffdf8] p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
+            className="group flex items-center gap-4 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
           >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-sm font-black text-white shadow-lg shadow-emerald-600/15">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-sm font-black text-white shadow-lg shadow-emerald-700/15">
               ✓
             </div>
 
