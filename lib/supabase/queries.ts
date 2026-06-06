@@ -377,3 +377,16 @@ export async function getAdminCustomerById(
     orders: orders ?? [],
   } as AdminCustomerWithOrders;
 }
+export async function getAdminDashboardData() {
+  const [orders, productsPageData, customers] = await Promise.all([
+    getAdminOrders(),
+    getAdminProductsPageData(),
+    getAdminCustomers(),
+  ]);
+
+  return {
+    orders,
+    products: productsPageData.products,
+    customers,
+  };
+}

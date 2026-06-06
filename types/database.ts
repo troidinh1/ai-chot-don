@@ -206,3 +206,15 @@ export type AdminCustomerAIResult = {
   careMessage: string;
   offerSuggestion: string;
 };
+export type AdminDashboardData = {
+  orders: OrderWithItems[];
+  products: ProductWithCategory[];
+  customers: AdminCustomerWithOrders[];
+};
+
+export type AdminDashboardAIResult = {
+  orderFocus: string;
+  productFocus: string;
+  customerFocus: string;
+  todayCaption: string;
+};
