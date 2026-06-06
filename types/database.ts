@@ -195,3 +195,14 @@ export type ProductCategoryLite = {
   name: string;
   slug: string;
 };
+
+
+export type AdminCustomerWithOrders = Customer & {
+  orders: Order[];
+};
+
+export type AdminCustomerAIResult = {
+  customerSegment: string;
+  careMessage: string;
+  offerSuggestion: string;
+};

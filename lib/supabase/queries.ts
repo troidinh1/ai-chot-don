@@ -1,7 +1,9 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import type {
+  AdminCustomerWithOrders,
   Category,
   CheckoutSessionWithItems,
+  Customer,
   OrderWithItems,
   ProductWithCategory,
   Shop,
@@ -310,4 +312,68 @@ export async function getAdminProductById(productId: string) {
   }
 
   return product;
+}
+
+export async function getAdminCustomers(): Promise<AdminCustomerWithOrders[]> {
+  const shop = await getDemoShop();
+
+  const { data: customers, error: customersError } = await supabaseAdmin
+    .from("customers")
+    .select("*")
+    .eq("shop_id", shop.id)
+    .order("last_order_at", { ascending: false, nullsFirst: false });
+
+  if (customersError) {
+    throw new Error(`Cannot get admin customers: ${customersError.message}`);
+  }
+
+  const customerIds = (customers ?? []).map((customer) => customer.id);
+
+  if (customerIds.length === 0) {
+    return [];
+  }
+
+  const { data: orders, error: ordersError } = await supabaseAdmin
+    .from("orders")
+    .select("*")
+    .in("customer_id", customerIds)
+    .order("created_at", { ascending: false });
+
+  if (ordersError) {
+    throw new Error(`Cannot get customer orders: ${ordersError.message}`);
+  }
+
+  return (customers ?? []).map((customer) => ({
+    ...customer,
+    orders: (orders ?? []).filter((order) => order.customer_id === customer.id),
+  })) as AdminCustomerWithOrders[];
+}
+
+export async function getAdminCustomerById(
+  customerId: string
+): Promise<AdminCustomerWithOrders> {
+  const { data: customer, error: customerError } = await supabaseAdmin
+    .from("customers")
+    .select("*")
+    .eq("id", customerId)
+    .single();
+
+  if (customerError || !customer) {
+    throw new Error(customerError?.message ?? "Không tìm thấy khách hàng.");
+  }
+
+  const { data: orders, error: ordersError } = await supabaseAdmin
+    .from("orders")
+    .select("*")
+    .eq("customer_id", customerId)
+    .order("created_at", { ascending: false });
+
+  if (ordersError) {
+    throw new Error(ordersError.message);
+  }
+
+  return {
+    ...customer,
+    orders: orders ?? [],
+  } as AdminCustomerWithOrders;
 }
